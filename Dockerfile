@@ -13,3 +13,8 @@ RUN apt-get -y update
 
 RUN apt-get install -y lizardfs-cgiserv
 
+EXPOSE 9425
+
+RUN sed -i 's/LIZARDFSCGISERV_ENABLE=false/LIZARDFSCGISERV_ENABLE=true/g'  /etc/default/lizardfs-cgiserv
+
+ENTRYPOINT  ["lizardfs-cgiserver"]
